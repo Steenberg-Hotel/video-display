@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  overflow: hidden;
+  height: 100%;
+  cursor: none; /* hides cursor */
+}
+
+video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
+</head>
+
+<body>
+
+<video id="video" autoplay loop muted playsinline>
+  <source src="video.mp4" type="video/mp4">
+</video>
+
+<script>
+const video = document.getElementById('video');
+
+// Try unmute after user interaction workaround
+document.addEventListener('click', () => {
+  video.muted = false;
+  video.play();
+});
+
+// Attempt fullscreen
+function goFullscreen() {
+  const elem = document.documentElement;
+  if (elem.requestFullscreen) elem.requestFullscreen();
+}
+goFullscreen();
+
+</script>
+
+</body>
+</html>
